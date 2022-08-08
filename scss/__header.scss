@@ -1,0 +1,148 @@
+.header {
+  position: fixed;
+  left: 50%;
+  top: 38px;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding-bottom: 10px;
+  z-index: 99;
+  transition: 150ms all linear;
+
+  .container {
+    @include flex;
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px;
+
+    @include responsive_medium {
+      padding: 10px 30px;
+    }
+
+    @include responsive_small {
+      padding: 10px;
+    }
+  }
+
+  .nav {
+    &__toggle {
+      display: none;
+
+      .toggle-bar {
+        background-color: $black;
+        width: 35px;
+        height: 3px;
+        position: relative;
+        transition: 100ms all ease-in-out;
+        border-radius: 40px;
+
+        @include responsive_small {
+          width: 25px;
+          height: 2.9px;
+        }
+
+        &::after,
+        &::before {
+          content: '';
+          background-color: inherit;
+          width: inherit;
+          height: inherit;
+          position: absolute;
+          transition: inherit;
+          border-radius: inherit;
+        }
+
+        &::before {
+          transform: translateY(-10px);
+
+          @include responsive_small {
+            transform: translateY(-7px);
+          }
+        }
+
+        &::after {
+          transform: translateY(10px);
+
+          @include responsive_small {
+            transform: translateY(7px);
+          }
+        }
+      }
+
+      .toggle-active {
+        transform: rotate(45deg);
+
+        &::before {
+          display: none;
+        }
+
+        &::after {
+          display: block;
+          transform: rotate(90deg);
+        }
+      }
+
+      @include responsive_medium {
+        display: block;
+      }
+    }
+
+    &__list {
+      @include flex;
+      transition: all 200ms ease-in-out;
+
+      @include responsive_medium {
+        display: none;
+      }
+    }
+
+    &__item {
+      margin-right: 25px;
+    }
+
+    &__link {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 28.5px;
+      text-transform: capitalize;
+      color: #18181b;
+      padding: 0px 5px;
+      position: relative;
+
+      &:hover {
+        &::after {
+          width: 85%;
+        }
+      }
+
+      &::after {
+        content: '';
+        width: 0%;
+        height: 1.5px;
+        background-image: $linear-gradient-pink;
+        position: absolute;
+        bottom: -25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 150ms all linear;
+      }
+    }
+
+    @include responsive_large {
+      &__item {
+        margin-right: 20px;
+      }
+
+      &__link {
+        padding: 0px;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+.nav-fixed {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

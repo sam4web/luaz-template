@@ -1,0 +1,467 @@
+// styles for home page
+// Hero start
+.hero {
+  height: 100vh;
+  @include grid(0, center, center);
+  @include parallex-bg('../img/banner-bg.jpg');
+
+  .section__container {
+    h1 {
+      font-size: 65px;
+      line-height: 78px;
+      margin-bottom: 10px;
+
+      @include responsive_medium {
+        font-size: 45px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: $pri_grey_dark;
+
+      @include responsive_medium {
+        font-size: 16px;
+      }
+    }
+
+    .subtitle {
+      margin-bottom: 10px;
+      letter-spacing: 0.8px;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+
+    .desc {
+      margin-bottom: 25px;
+      line-height: 28.8px;
+      max-width: 700px;
+    }
+  }
+}
+// Hero end
+
+// About start
+.about {
+  .section__container {
+    text-align: left;
+    @include grid(50px, center, center);
+    grid-template-columns: 1fr 1.15fr;
+
+    @include responsive_medium {
+      gap: 25px;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .img-container {
+    position: relative;
+
+    img {
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+
+    .play-btn {
+      @include flex(center, center);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $pri_pink;
+      width: 75px;
+      height: 75px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 40px;
+      color: $white;
+      transition: 150ms all ease-out;
+
+      &:hover {
+        background-color: $white;
+        color: $pri_pink;
+      }
+    }
+  }
+
+  .content-container {
+    @include responsive_medium {
+      max-width: 450px;
+      margin-right: auto;
+    }
+
+    .content {
+      margin-bottom: 25px;
+
+      @include responsive_medium {
+        margin-bottom: 15px;
+      }
+
+      &-title {
+        font-size: 25px;
+        line-height: 30px;
+        text-transform: capitalize;
+        margin-bottom: 5px;
+
+        @include responsive_medium {
+          font-size: 20px;
+          margin-bottom: 0px;
+        }
+      }
+
+      .desc {
+        color: $pri_grey_dark;
+        line-height: 27px;
+      }
+    }
+  }
+}
+// About end
+
+// Banner start
+.banner {
+  background-image: $linear-gradient-pink;
+  padding: 20px;
+
+  .section__container {
+    @include flex;
+
+    @include responsive_medium {
+      align-items: flex-start;
+      flex-direction: column;
+
+      .section__subtitle {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .btn {
+    color: $pri_dark;
+    background: $white;
+
+    &:hover {
+      color: $white;
+      background: $pri_dark;
+    }
+  }
+
+  .content-container {
+    text-align: left;
+
+    .section__title {
+      color: $white;
+      margin-bottom: 10px;
+    }
+
+    .section__subtitle {
+      color: $white;
+    }
+  }
+}
+// Banner end
+
+// Service start
+.service {
+  .desc {
+    margin-bottom: 25px;
+    line-height: 28.8px;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: $pri_grey_dark;
+
+    @include responsive_medium {
+      font-size: 16px;
+    }
+  }
+
+  &-item {
+    margin-top: 55px;
+    text-align: left;
+    @include grid(30px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    @include responsive_small {
+      margin-top: 25px;
+    }
+
+    .item {
+      background-color: $white;
+      padding: 25px 20px;
+      border-radius: 10px;
+      transition: 250ms all linear;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+        transform: translateY(-25px);
+      }
+
+      .icon {
+        font-size: 30px;
+        padding: 20px;
+        color: $white;
+        display: inline-block;
+        border-radius: 40px;
+        margin-bottom: 25px;
+      }
+
+      &-title {
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        transition: 150ms all ease-in-out;
+
+        &:hover {
+          color: $pri_pink;
+        }
+      }
+
+      &-desc {
+        line-height: 28.8px;
+        color: $pri_grey_dark;
+      }
+    }
+  }
+}
+// Service end
+
+// Portfolio start
+.portfolio {
+  &-item {
+    margin-top: 50px;
+    text-align: left;
+    @include grid(25px);
+
+    grid-template-areas:
+      'one one two two three three '
+      'four four four five five five'
+      'six six seven seven eight eight';
+
+    @include responsive_medium {
+      gap: 15px;
+      grid-template-areas:
+        'one two'
+        'three four'
+        'five six'
+        'seven eight';
+    }
+
+    @include responsive_small {
+      margin-top: 25px;
+      gap: 30px;
+      grid-template-areas:
+        'one'
+        'two'
+        'three '
+        'four'
+        'five '
+        'six'
+        'seven '
+        'eight';
+    }
+
+    .item {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        img {
+          transform: scale(1.4);
+        }
+
+        .info {
+          bottom: 20%;
+          opacity: 1;
+        }
+      }
+
+      .img-container {
+        border-radius: 5px;
+        overflow: hidden;
+
+        img {
+          display: block;
+          transition: 300ms all linear;
+        }
+      }
+
+      .info {
+        background-color: rgba(255, 255, 255, 0.95);
+        display: inline-block;
+        padding: 30px;
+        border-radius: 5px;
+        z-index: 2;
+        position: absolute;
+        bottom: 0%;
+        left: -7%;
+        opacity: 0;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        transition: 300ms all linear;
+        text-transform: capitalize;
+
+        @include responsive_large {
+          padding: 15px 10px;
+        }
+
+        @include responsive_small {
+          padding: 20px;
+        }
+
+        .item-type {
+          color: $pri_grey_dark;
+        }
+
+        .item-name {
+          font-size: 23px;
+
+          @include responsive_medium {
+            font-size: 18px;
+          }
+        }
+      }
+
+      //   First child -> script -> display none
+      //   portfolio item grid template area
+      &:nth-child(2) {
+        grid-area: one;
+      }
+      &:nth-child(3) {
+        grid-area: two;
+      }
+      &:nth-child(4) {
+        grid-area: three;
+      }
+      &:nth-child(5) {
+        grid-area: four;
+      }
+      &:nth-child(6) {
+        grid-area: five;
+      }
+      &:nth-child(7) {
+        grid-area: six;
+      }
+      &:nth-child(8) {
+        grid-area: seven;
+      }
+      &:nth-child(9) {
+        grid-area: eight;
+      }
+    }
+  }
+}
+// Portfolio end
+
+// Contact start
+.contact {
+  background-color: $white;
+  color: $pri_grey_dark;
+
+  .section__container {
+    text-align: left;
+    @include grid(30px);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    @include responsive_small {
+      .desc {
+        max-width: 285px;
+      }
+    }
+  }
+
+  form {
+    margin-top: 25px;
+  }
+
+  .input-container {
+    margin-bottom: 15px;
+    max-width: 300px;
+    @include grid(20px);
+    grid-template-areas:
+      'name email'
+      'subject phone'
+      'message message';
+
+    @include responsive_small {
+      grid-template-areas:
+        'name'
+        'email'
+        'subject'
+        'phone'
+        'message';
+    }
+
+    input,
+    textarea {
+      background-color: #f9f9f9;
+      font-size: 16.5px;
+      line-height: 24px;
+      padding: 15px 20px;
+      display: block;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: 100ms all linear;
+
+      @include responsive_small {
+        padding: 10px 15px;
+        font-size: 15px;
+        line-height: 15px;
+      }
+
+      &::placeholder {
+        transition: inherit;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $pri_pink;
+
+        &::placeholder {
+          visibility: hidden;
+        }
+      }
+    }
+
+    input {
+      max-width: 280px;
+      height: 55px;
+    }
+
+    textarea {
+      height: 130px;
+      padding: 15px;
+      resize: vertical;
+    }
+  }
+
+  .checkbox {
+    margin-bottom: 20px;
+    @include flex(flex-start, center);
+
+    input[type='checkbox'] {
+      width: 17px;
+      height: 17px;
+      margin-right: 8px;
+    }
+
+    a {
+      color: $pri_pink;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .img-container,
+  .content-container {
+    @include responsive_small {
+      width: 300px;
+    }
+  }
+}
+// Contact end

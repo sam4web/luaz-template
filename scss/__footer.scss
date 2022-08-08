@@ -1,0 +1,188 @@
+.footer {
+  .section__container {
+    text-align: left;
+    @include grid(80px);
+    grid-template-columns: 1fr 2fr;
+
+    @include responsive_large {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__about {
+    @include responsive_small {
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      color: $pri_grey_dark;
+      max-width: 340px;
+      display: block;
+      margin-bottom: 15px;
+
+      @include responsive_large {
+        max-width: 400px;
+      }
+
+      @include responsive_small {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+      }
+    }
+
+    .social-list {
+      @include flex;
+      max-width: 200px;
+
+      @include responsive_small {
+        max-width: 150px;
+      }
+
+      @include responsive_small {
+        margin: auto;
+      }
+
+      li {
+        @include flex(center, center);
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: 100ms all linear;
+
+        @include responsive_small {
+          width: 30px;
+          height: 30px;
+        }
+
+        a {
+          color: $pri_dark;
+          font-size: 20px;
+          transition: inherit;
+
+          @include responsive_small {
+            font-size: 16px;
+          }
+        }
+
+        &:hover {
+          background-color: $pri_pink;
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &__list {
+    @include grid(30px);
+    grid-template-columns: repeat(3, 1fr);
+
+    @include responsive_small {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__item {
+      &-title {
+        text-transform: capitalize;
+        font-size: 25px;
+        line-height: 30px;
+        border-bottom: 1px solid #80808040;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        position: relative;
+
+        &::after,
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: $pri_pink;
+          height: 2.5px;
+          border-radius: 40px;
+          bottom: -2px;
+        }
+
+        &::after {
+          left: 0;
+          width: 45px;
+        }
+
+        &::before {
+          left: 53px;
+          width: 20px;
+        }
+      }
+
+      &-list {
+        li {
+          font-weight: 500;
+          text-transform: capitalize;
+          line-height: 35px;
+          transition: 100ms all linear;
+          position: relative;
+
+          &:hover {
+            a {
+              margin-left: 14px;
+              color: $pri_pink;
+            }
+
+            &::before {
+              opacity: 1;
+            }
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 1.7px;
+            background-color: $pri_pink;
+            border-radius: 40px;
+            opacity: 0;
+            transition: inherit;
+          }
+
+          a {
+            transition: inherit;
+            color: $pri_grey_dark;
+          }
+
+          a[href='mailto:hello@luaz.com'] {
+            text-transform: lowercase;
+          }
+        }
+      }
+
+      &-contact {
+        a,
+        span {
+          color: $pri_grey_dark;
+          font-weight: 400;
+        }
+
+        a {
+          text-transform: lowercase;
+          margin: 0 !important;
+        }
+
+        li {
+          &::before {
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+}
